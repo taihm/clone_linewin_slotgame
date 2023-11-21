@@ -1,0 +1,258 @@
+
+BONUSJACKPOTSCATTER.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BGWILD
+  rotate: false
+  xy: 3790, 204
+  size: 168, 496
+  orig: 168, 496
+  offset: 0, 0
+  index: -1
+BMW
+  rotate: false
+  xy: 457, 172
+  size: 292, 212
+  orig: 292, 212
+  offset: 0, 0
+  index: -1
+BONUS
+  rotate: false
+  xy: 457, 79
+  size: 247, 91
+  orig: 247, 91
+  offset: 0, 0
+  index: -1
+DUCATI
+  rotate: false
+  xy: 1078, 704
+  size: 122, 127
+  orig: 122, 127
+  offset: 0, 0
+  index: -1
+FERRARI
+  rotate: true
+  xy: 3782, 1622
+  size: 420, 293
+  orig: 420, 293
+  offset: 0, 0
+  index: -1
+LAMBOR
+  rotate: false
+  xy: 751, 204
+  size: 162, 180
+  orig: 162, 180
+  offset: 0, 0
+  index: -1
+LIGHT
+  rotate: false
+  xy: 1378, 1509
+  size: 539, 533
+  orig: 539, 533
+  offset: 0, 0
+  index: -1
+RR
+  rotate: false
+  xy: 914, 680
+  size: 162, 151
+  orig: 162, 151
+  offset: 0, 0
+  index: -1
+SCATTER
+  rotate: true
+  xy: 3960, 388
+  size: 312, 91
+  orig: 312, 91
+  offset: 0, 0
+  index: -1
+SIEU XE LIGHT2
+  rotate: false
+  xy: 2866, 731
+  size: 93, 93
+  orig: 93, 93
+  offset: 0, 0
+  index: -1
+SIEU XE LIGHT3
+  rotate: false
+  xy: 2, 2
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+WILD
+  rotate: true
+  xy: 2362, 863
+  size: 209, 98
+  orig: 209, 98
+  offset: 0, 0
+  index: -1
+WILDLIGHT1
+  rotate: false
+  xy: 460, 386
+  size: 442, 375
+  orig: 442, 375
+  offset: 0, 0
+  index: -1
+WILDLIGHT10
+  rotate: false
+  xy: 2, 712
+  size: 456, 664
+  orig: 456, 664
+  offset: 0, 0
+  index: -1
+WILDLIGHT11
+  rotate: false
+  xy: 2, 1378
+  size: 458, 664
+  orig: 458, 664
+  offset: 0, 0
+  index: -1
+WILDLIGHT12
+  rotate: false
+  xy: 918, 1421
+  size: 458, 621
+  orig: 458, 621
+  offset: 0, 0
+  index: -1
+WILDLIGHT13
+  rotate: true
+  xy: 1919, 1571
+  size: 471, 593
+  orig: 471, 593
+  offset: 0, 0
+  index: -1
+WILDLIGHT14
+  rotate: true
+  xy: 1931, 1074
+  size: 495, 532
+  orig: 495, 532
+  offset: 0, 0
+  index: -1
+WILDLIGHT15
+  rotate: false
+  xy: 1324, 622
+  size: 524, 469
+  orig: 524, 469
+  offset: 0, 0
+  index: -1
+WILDLIGHT16
+  rotate: false
+  xy: 1378, 1093
+  size: 551, 414
+  orig: 551, 414
+  offset: 0, 0
+  index: -1
+WILDLIGHT17
+  rotate: false
+  xy: 2465, 826
+  size: 557, 382
+  orig: 557, 382
+  offset: 0, 0
+  index: -1
+WILDLIGHT18
+  rotate: true
+  xy: 914, 833
+  size: 543, 408
+  orig: 543, 408
+  offset: 0, 0
+  index: -1
+WILDLIGHT19
+  rotate: false
+  xy: 3577, 702
+  size: 511, 454
+  orig: 511, 454
+  offset: 0, 0
+  index: -1
+WILDLIGHT2
+  rotate: false
+  xy: 2866, 332
+  size: 460, 385
+  orig: 460, 385
+  offset: 0, 0
+  index: -1
+WILDLIGHT20
+  rotate: true
+  xy: 2362, 350
+  size: 474, 502
+  orig: 474, 502
+  offset: 0, 0
+  index: -1
+WILDLIGHT21
+  rotate: true
+  xy: 3024, 719
+  size: 447, 551
+  orig: 447, 551
+  offset: 0, 0
+  index: -1
+WILDLIGHT22
+  rotate: true
+  xy: 2514, 1210
+  size: 438, 598
+  orig: 438, 598
+  offset: 0, 0
+  index: -1
+WILDLIGHT23
+  rotate: true
+  xy: 3167, 1622
+  size: 420, 613
+  orig: 420, 613
+  offset: 0, 0
+  index: -1
+WILDLIGHT24
+  rotate: true
+  xy: 2514, 1650
+  size: 392, 651
+  orig: 392, 651
+  offset: 0, 0
+  index: -1
+WILDLIGHT3
+  rotate: true
+  xy: 3678, 1158
+  size: 462, 416
+  orig: 462, 416
+  offset: 0, 0
+  index: -1
+WILDLIGHT4
+  rotate: false
+  xy: 3328, 240
+  size: 460, 460
+  orig: 460, 460
+  offset: 0, 0
+  index: -1
+WILDLIGHT5
+  rotate: true
+  xy: 1850, 616
+  size: 456, 510
+  orig: 456, 510
+  offset: 0, 0
+  index: -1
+WILDLIGHT6
+  rotate: true
+  xy: 3114, 1168
+  size: 452, 562
+  orig: 452, 562
+  offset: 0, 0
+  index: -1
+WILDLIGHT7
+  rotate: false
+  xy: 460, 763
+  size: 452, 613
+  orig: 452, 613
+  offset: 0, 0
+  index: -1
+WILDLIGHT8
+  rotate: false
+  xy: 2, 66
+  size: 453, 644
+  orig: 453, 644
+  offset: 0, 0
+  index: -1
+WILDLIGHT9
+  rotate: false
+  xy: 462, 1378
+  size: 454, 664
+  orig: 454, 664
+  offset: 0, 0
+  index: -1

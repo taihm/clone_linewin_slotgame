@@ -1,0 +1,411 @@
+
+NOHUTHANGLON.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FRAMEMONEY
+  rotate: true
+  xy: 3808, 2910
+  size: 462, 253
+  orig: 462, 253
+  offset: 0, 0
+  index: -1
+NOHU
+  rotate: true
+  xy: 3689, 1416
+  size: 550, 214
+  orig: 550, 214
+  offset: 0, 0
+  index: -1
+THANGLON
+  rotate: true
+  xy: 3818, 3375
+  size: 719, 169
+  orig: 719, 169
+  offset: 0, 0
+  index: -1
+TIENNOHU1
+  rotate: false
+  xy: 3989, 3733
+  size: 98, 113
+  orig: 98, 113
+  offset: 0, 0
+  index: -1
+TIENNOHU13
+  rotate: false
+  xy: 1257, 624
+  size: 1145, 720
+  orig: 1145, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU14
+  rotate: false
+  xy: 2, 1214
+  size: 1253, 720
+  orig: 1253, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU15
+  rotate: false
+  xy: 2, 1936
+  size: 1268, 720
+  orig: 1268, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU16
+  rotate: false
+  xy: 2556, 3374
+  size: 1260, 720
+  orig: 1260, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU17
+  rotate: false
+  xy: 2, 3374
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU18
+  rotate: false
+  xy: 2565, 1968
+  size: 1244, 699
+  orig: 1244, 699
+  offset: 0, 0
+  index: -1
+TIENNOHU19
+  rotate: false
+  xy: 2, 2658
+  size: 1279, 714
+  orig: 1279, 714
+  offset: 0, 0
+  index: -1
+TIENNOHU2
+  rotate: false
+  xy: 3811, 2065
+  size: 167, 190
+  orig: 167, 190
+  offset: 0, 0
+  index: -1
+TIENNOHU20
+  rotate: false
+  xy: 2, 492
+  size: 1250, 720
+  orig: 1250, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU21
+  rotate: false
+  xy: 1284, 3374
+  size: 1270, 720
+  orig: 1270, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU22
+  rotate: false
+  xy: 2548, 2669
+  size: 1258, 703
+  orig: 1258, 703
+  offset: 0, 0
+  index: -1
+TIENNOHU23
+  rotate: false
+  xy: 1283, 2664
+  size: 1263, 708
+  orig: 1263, 708
+  offset: 0, 0
+  index: -1
+TIENNOHU3
+  rotate: true
+  xy: 3615, 7
+  size: 234, 274
+  orig: 234, 274
+  offset: 0, 0
+  index: -1
+TIENNOHU6
+  rotate: true
+  xy: 2, 11
+  size: 479, 526
+  orig: 479, 526
+  offset: 0, 0
+  index: -1
+TIENNOHU8
+  rotate: false
+  xy: 2404, 2
+  size: 656, 684
+  orig: 656, 684
+  offset: 0, 0
+  index: -1
+TIENTHANGLON1
+  rotate: false
+  xy: 2226, 70
+  size: 99, 103
+  orig: 99, 103
+  offset: 0, 0
+  index: -1
+TIENTHANGLON10
+  rotate: true
+  xy: 3615, 243
+  size: 462, 428
+  orig: 462, 428
+  offset: 0, 0
+  index: -1
+TIENTHANGLON11
+  rotate: false
+  xy: 530, 23
+  size: 513, 467
+  orig: 513, 467
+  offset: 0, 0
+  index: -1
+TIENTHANGLON13
+  rotate: true
+  xy: 3538, 707
+  size: 616, 537
+  orig: 616, 537
+  offset: 0, 0
+  index: -1
+TIENTHANGLON14
+  rotate: true
+  xy: 3062, 22
+  size: 664, 551
+  orig: 664, 551
+  offset: 0, 0
+  index: -1
+TIENTHANGLON2
+  rotate: false
+  xy: 2226, 175
+  size: 132, 133
+  orig: 132, 133
+  offset: 0, 0
+  index: -1
+TIENTHANGLON20
+  rotate: false
+  xy: 1254, 8
+  size: 970, 614
+  orig: 970, 614
+  offset: 0, 0
+  index: -1
+TIENTHANGLON23
+  rotate: false
+  xy: 2404, 688
+  size: 1132, 635
+  orig: 1132, 635
+  offset: 0, 0
+  index: -1
+TIENTHANGLON24
+  rotate: false
+  xy: 2501, 1325
+  size: 1186, 641
+  orig: 1186, 641
+  offset: 0, 0
+  index: -1
+TIENTHANGLON25
+  rotate: false
+  xy: 1272, 1346
+  size: 1227, 650
+  orig: 1227, 650
+  offset: 0, 0
+  index: -1
+TIENTHANGLON26
+  rotate: false
+  xy: 1283, 1998
+  size: 1280, 664
+  orig: 1280, 664
+  offset: 0, 0
+  index: -1
+TIENTHANGLON3
+  rotate: true
+  xy: 3891, 68
+  size: 173, 163
+  orig: 173, 163
+  offset: 0, 0
+  index: -1
+TIENTHANGLON4
+  rotate: true
+  xy: 1045, 278
+  size: 212, 192
+  orig: 212, 192
+  offset: 0, 0
+  index: -1
+TIENTHANGLON5
+  rotate: false
+  xy: 3808, 2684
+  size: 255, 224
+  orig: 255, 224
+  offset: 0, 0
+  index: -1
+TIENTHANGLON6
+  rotate: true
+  xy: 3811, 2388
+  size: 294, 263
+  orig: 294, 263
+  offset: 0, 0
+  index: -1
+XE
+  rotate: false
+  xy: 3811, 2257
+  size: 241, 129
+  orig: 241, 129
+  offset: 0, 0
+  index: -1
+XE2
+  rotate: true
+  xy: 2226, 310
+  size: 312, 110
+  orig: 312, 110
+  offset: 0, 0
+  index: -1
+XE3
+  rotate: true
+  xy: 3989, 3848
+  size: 246, 104
+  orig: 246, 104
+  offset: 0, 0
+  index: -1
+XE4
+  rotate: true
+  xy: 1045, 26
+  size: 250, 116
+  orig: 250, 116
+  offset: 0, 0
+  index: -1
+
+NOHUTHANGLON2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+LIGHT
+  rotate: false
+  xy: 625, 1488
+  size: 609, 602
+  orig: 609, 602
+  offset: 0, 0
+  index: -1
+TIENNOHU10
+  rotate: false
+  xy: 632, 2655
+  size: 838, 714
+  orig: 838, 714
+  offset: 0, 0
+  index: -1
+TIENNOHU11
+  rotate: false
+  xy: 1038, 3371
+  size: 933, 720
+  orig: 933, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU12
+  rotate: false
+  xy: 2, 3371
+  size: 1034, 720
+  orig: 1034, 720
+  offset: 0, 0
+  index: -1
+TIENNOHU4
+  rotate: false
+  xy: 2372, 2356
+  size: 317, 355
+  orig: 317, 355
+  offset: 0, 0
+  index: -1
+TIENNOHU5
+  rotate: false
+  xy: 1970, 2214
+  size: 400, 433
+  orig: 400, 433
+  offset: 0, 0
+  index: -1
+TIENNOHU7
+  rotate: true
+  xy: 1350, 2085
+  size: 562, 618
+  orig: 562, 618
+  offset: 0, 0
+  index: -1
+TIENNOHU9
+  rotate: false
+  xy: 1472, 2649
+  size: 752, 720
+  orig: 752, 720
+  offset: 0, 0
+  index: -1
+TIENTHANGLON12
+  rotate: false
+  xy: 1236, 1575
+  size: 561, 508
+  orig: 561, 508
+  offset: 0, 0
+  index: -1
+TIENTHANGLON15
+  rotate: false
+  xy: 632, 2092
+  size: 716, 561
+  orig: 716, 561
+  offset: 0, 0
+  index: -1
+TIENTHANGLON16
+  rotate: true
+  xy: 2226, 2713
+  size: 770, 576
+  orig: 770, 576
+  offset: 0, 0
+  index: -1
+TIENTHANGLON17
+  rotate: false
+  xy: 2897, 3504
+  size: 816, 587
+  orig: 816, 587
+  offset: 0, 0
+  index: -1
+TIENTHANGLON18
+  rotate: true
+  xy: 2, 389
+  size: 872, 598
+  orig: 872, 598
+  offset: 0, 0
+  index: -1
+TIENTHANGLON19
+  rotate: false
+  xy: 1973, 3485
+  size: 922, 606
+  orig: 922, 606
+  offset: 0, 0
+  index: -1
+TIENTHANGLON21
+  rotate: true
+  xy: 2, 1263
+  size: 1029, 621
+  orig: 1029, 621
+  offset: 0, 0
+  index: -1
+TIENTHANGLON22
+  rotate: true
+  xy: 2, 2294
+  size: 1075, 628
+  orig: 1075, 628
+  offset: 0, 0
+  index: -1
+TIENTHANGLON7
+  rotate: false
+  xy: 3715, 3440
+  size: 335, 304
+  orig: 335, 304
+  offset: 0, 0
+  index: -1
+TIENTHANGLON8
+  rotate: false
+  xy: 3715, 3746
+  size: 378, 345
+  orig: 378, 345
+  offset: 0, 0
+  index: -1
+TIENTHANGLON9
+  rotate: false
+  xy: 2, 2
+  size: 417, 385
+  orig: 417, 385
+  offset: 0, 0
+  index: -1

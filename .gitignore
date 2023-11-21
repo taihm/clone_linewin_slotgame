@@ -7,6 +7,7 @@
 # Cocos Creator Projects
 
 build/
+build-templated/
 library/
 temp/
 local/
@@ -18,6 +19,11 @@ web-mobile/
 runtime/
 jsb/
 export/
+extensions/
+library/
+profiles/
+settings/
+test_build/
 
 # Logs and databases
 

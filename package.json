@@ -1,0 +1,13 @@
+{
+  "name": "clone_slot_game_2",
+  "uuid": "1b322641-b533-47b4-b919-0c5a346e1547",
+  "creator": {
+    "version": "3.8.0",
+    "registry": {
+      "remote": {}
+    },
+    "dependencies": {
+      "plugin-import-2x": "1.1.10"
+    }
+  }
+}

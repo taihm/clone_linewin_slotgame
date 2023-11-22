@@ -119,7 +119,7 @@ export class GameManager extends Component {
         if (!!dataFetch) {
             if (void 0 !== dataFetch.SlotGame.status) {
                 if (dataFetch.SlotGame.status === 1) {
-                    this.result = dataFetch.SlotGame.result.sieuxe.cel;
+                    this.result = dataFetch.SlotGame.result.sieuxe;
                     this.lineWin = dataFetch.SlotGame.result.sieuxe.line_win;
                     this.isBigWin = dataFetch.SlotGame.result.sieuxe.isBigWin;
                     message = dataFetch.SlotGame.message;
@@ -228,6 +228,7 @@ export class GameManager extends Component {
             if (lineWinResult.length > 0) {
                 // show line win
                 this.machine.getComponent('Machine').showLinesWin();
+                this.machine.getComponent('Machine').showTextMoneyWin();
             }
             if (this.isBigWin) {
                 this.bigWin.active = true;

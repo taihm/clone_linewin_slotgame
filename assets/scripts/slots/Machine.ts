@@ -24,6 +24,9 @@ export class Machine extends Component {
     @property(Node)
     public mainLine: Node = null;
 
+    @property(Node)
+    public textMoneyWin: Node = null;
+
     @property(Prefab)
     public _reelPrefab = null;
 
@@ -47,6 +50,7 @@ export class Machine extends Component {
     audioBG: AudioSource;
 
     public isFasterSpeed = false;
+    public moneyWin = 0;
 
     arrLineWin: ILineWin[] = [];
 
@@ -148,8 +152,10 @@ export class Machine extends Component {
         // this.button.getComponent(Button).active = false;
     }
 
-    async stop(result: Array<Array<number>> = null, lineWin: ILineWin[]): Promise<boolean> {
+    async stop(result: any, lineWin: ILineWin[]): Promise<boolean> {
         this.arrLineWin = lineWin;
+        this.moneyWin = result.win;
+        const arrayCel: Array<Array<number>> = result.cel
         await setTimeout(() => {
             this.spinning = false;
             this.button.getComponent(Button).interactable = true;
@@ -173,7 +179,7 @@ export class Machine extends Component {
             const spinDelay = i < 2 + rngMod ? i / 4 : rngMod * (i - 2) + i / 4;
             // console.log('spin delay: ' + spinDelay);
             const theReel = this.reels[i].getComponent('Reel');
-            this.stopReel(theReel, result[i], spinDelay, i);
+            this.stopReel(theReel, arrayCel[i], spinDelay, i);
         }
         
         return new Promise((resolve) => {
@@ -241,5 +247,13 @@ export class Machine extends Component {
                 this.mainLine.children[1].getChildByName(String(i)).getComponent('itemLines').offEf();
             }
         }
+    }
+
+    showTextMoneyWin = () => {
+        this.textMoneyWin.active = true;
+        // if (this.moneyWin > 0) {
+        //     console.log(this.moneyWin)
+        //     this.textMoneyWin.active = true;
+        // }
     }
 }

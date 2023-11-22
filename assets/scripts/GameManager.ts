@@ -1,6 +1,5 @@
 import { _decorator, AudioClip, CCInteger, Component, math, Node, Vec2 } from 'cc';
 import { AudioMgr } from './AudioMgr';
-import { ReWebSocket } from './ReWebSocket';
 import { z } from 'zod';
 import { DataBet, DataClient, TResult } from './slots/Machine';
 const { ccclass, property } = _decorator;
@@ -157,12 +156,6 @@ export class GameManager extends Component {
     }
 
     sendRequestResult = () => {
-        // let request = {
-        //     data: {
-        //         status: 1
-        //     }
-        // }
-
         let request: TRequest = {
             "data": {
                 "status": 1,
@@ -196,11 +189,10 @@ export class GameManager extends Component {
             this.machine.getComponent('Machine').isFasterSpeed = false;
             this.machine.getComponent('Machine').spin();
             this.machine.getComponent('Machine').hideLinesWin();
-            // this.requestResult();
             this.sendRequestResult();
             setTimeout(() => {
                 this.block = true;
-            this.machine.getComponent('Machine').lock();
+                this.machine.getComponent('Machine').lock();
             }, 1200);
         } 
         // else if (!this.block) {
@@ -216,27 +208,26 @@ export class GameManager extends Component {
             this.machine.getComponent('Machine').isFasterSpeed = true;
             this.machine.getComponent('Machine').spin();
             this.machine.getComponent('Machine').lockOtherButton();
-            // this.requestResult();
             this.sendRequestResult();
-        } else if (!this.block) {
-            this.block = true;
-            this.machine.getComponent('Machine').lock();
+            setTimeout(() => {
+                this.block = true;
+                this.machine.getComponent('Machine').lock();
+            }, 1200);
         }
         this.machine.getComponent('Machine').playClick();
     }
 
     clickAutoSpin(): void {
-        this.equalLines = [1,2,3];
         if (this.machine.getComponent('Machine').spinning === false) {
             this.block = false;
             this.machine.getComponent('Machine').isFasterSpeed = false;
             this.machine.getComponent('Machine').spin();
             this.machine.getComponent('Machine').hideLinesWin();
-            // this.requestResult();
             this.sendRequestResult();
-        } else if (!this.block) {
-            this.block = true;
-            this.machine.getComponent('Machine').lock();
+            setTimeout(() => {
+                this.block = true;
+                this.machine.getComponent('Machine').lock();
+            }, 1200);
         }
     }
 
@@ -244,10 +235,9 @@ export class GameManager extends Component {
         let resultRelayed = this.result;
         let lineWinResult = this.lineWin;
         let isEndSpin = await this.machine.getComponent('Machine').stop(resultRelayed, lineWinResult);
-        // this.isBigWin = this.result.sieuxe.isBigWin;
         if (isEndSpin) {
             if (lineWinResult.length > 0) {
-                // show line win
+                // show line win, text money win
                 this.machine.getComponent('Machine').showLinesWin();
                 this.machine.getComponent('Machine').showTextMoneyWin();
             }

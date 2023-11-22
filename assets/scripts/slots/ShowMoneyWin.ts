@@ -1,25 +1,31 @@
-import { _decorator, Component, Node, tween, Vec3 } from 'cc';
+import { _decorator, Component, Node, tween, Vec3, instantiate, Label } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShowMoneyWin')
 export class ShowMoneyWin extends Component {
 
     @property(Node)
-    public textNode: Node;
+    public lblTextNode: Node;
 
-    protected onLoad(): void {
-        this.move(this.node)
-    }
+    // protected onLoad(): void {
+    //     this.move(this.node)
+    // }
 
-    move = (element: Node) => {
+    showText = (moneyText: string) => {
         const defaultPosition: Vec3 = this.node.getPosition();
-        tween(element)
+        let textNode = instantiate(this.lblTextNode);
+        textNode.setPosition(defaultPosition);
+        // this.button.getChildByName('Label').getComponent(Label).string = "SPIN";
+        textNode.getComponent(Label).string = '+' + moneyText
+        this.node.addChild(textNode);
+        tween(textNode)
         .to(1, {
-            position: new Vec3(element.position.x, element.position.y + 200, element.position.z)
+            position: new Vec3(defaultPosition.x, defaultPosition.y + 200, defaultPosition.z)
         })
         .call(() => {
-            this.node.setPosition(defaultPosition);
-            this.node.active = false;
+            // this.lblTextNode.setPosition(defaultPosition);
+            // this.lblTextNode.active = false;
+            this.node.removeAllChildren();
         })
         .start();
     }

@@ -308,10 +308,6 @@ export class Machine extends Component {
     }
 
     showTextMoneyWin = () => {
-        this.textMoneyWin.active = true;
-        // if (this.moneyWin > 0) {
-        //     console.log(this.moneyWin)
-        //     this.textMoneyWin.active = true;
-        // }
+        this.textMoneyWin.getComponent('').showText(this.moneyWin);
     }
 }

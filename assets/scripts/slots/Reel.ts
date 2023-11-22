@@ -2,7 +2,10 @@ import { _decorator, Component, EAxisDirection, Enum, instantiate, Node, Prefab,
 const { ccclass, property } = _decorator;
 
 import Aux from '../SlotEnum';
-import { ILineWin } from './Machine';
+import { TResultLine } from './Machine';
+import { z } from 'zod';
+
+type TResultLine = z.infer<typeof TResultLine>
 
 @ccclass('Reel')
 export default class Reel extends Component {
@@ -67,7 +70,7 @@ export default class Reel extends Component {
     }
 
     private result: Array<number> = [];
-    private arrLineWin: Array<ILineWin> = [];
+    private arrLineWin: Array<TResultLine> = [];
 
     public stopSpinning = false;
 
@@ -86,7 +89,7 @@ export default class Reel extends Component {
         }
     }
 
-    readyStop(newResult: Array<number>, linesWin: ILineWin[], indexCurrentReelStop: number): void {
+    readyStop(newResult: Array<number>, linesWin: TResultLine[], indexCurrentReelStop: number): void {
         const check = this.spinDirection === Aux.Direction.Down || newResult == null;
         this.result = check ? newResult : newResult.reverse();
         this.arrLineWin = linesWin;

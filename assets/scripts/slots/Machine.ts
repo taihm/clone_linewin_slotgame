@@ -3,12 +3,70 @@ const { ccclass, property } = _decorator;
 
 import Aux from '../SlotEnum';
 import { AudioMgr } from '../AudioMgr';
+import { z } from 'zod';
 
-export type ILineWin = {
-    line: number,
-    win: number,
-    type: number | null
-}
+export const DataBet = z.object({
+    status: z.number({
+        required_error: "Status is required",
+        invalid_type_error: "Status must be a number",
+      }),
+    cuoc: z.number(),
+    line: z.array(z.number())
+})
+type DataBet = z.infer<typeof DataBet>;
+
+export const UserProfile = z.object({
+    name: z.string(),
+    amount: z.number()
+})
+type UserProfile = z.infer<typeof UserProfile>
+
+export const DataGame = z.object({
+    id: z.string(),
+    bet: z.number(),
+    bonus: z.nullable(z.number()),
+    bonusX: z.number(),
+    bonusL: z.number(),
+    bonusWin: z.number(),
+    free: z.number(),
+    lastBet: z.number()
+})
+type DataGame = z.infer<typeof DataGame>
+
+export const DataClient = z.object({
+    profile: UserProfile,
+    SieuXe: DataGame
+})
+type DataClient = z.infer<typeof DataClient>
+
+export const TResultLine = z.object({
+    line: z.number(), 
+    win: z.number(), 
+    type: z.nullable(z.number())
+})
+type TResultLine = z.infer<typeof TResultLine>
+
+export const TResult = z.object({
+    sieuxe: z.object({
+        status: z.number(),
+        cel: z.nullable(z.array(z.array(z.number()))),
+        line_win: z.nullable(z.array(TResultLine.partial())),
+        win: z.nullable(z.number()),
+        free: z.nullable(z.number()),
+        isFree: z.nullable(z.boolean()),
+        isBonus: z.nullable(z.number()),
+        isNoHu: z.nullable(z.boolean()),
+        isBigWin: z.nullable(z.boolean())
+    }),
+    user: z.nullable(z.object({
+        money: z.number()
+    })),
+    notice: z.object({
+        text: z.string(),
+        title: z.string(),
+    })
+})
+type TResult = z.infer<typeof TResult>
 
 @ccclass('Machine')
 export class Machine extends Component {
@@ -52,7 +110,7 @@ export class Machine extends Component {
     public isFasterSpeed = false;
     public moneyWin = 0;
 
-    arrLineWin: ILineWin[] = [];
+    arrLineWin: TResultLine[] = [];
 
     set reelPrefab(newPrefab: Prefab) {
         this._reelPrefab = newPrefab;
@@ -152,10 +210,10 @@ export class Machine extends Component {
         // this.button.getComponent(Button).active = false;
     }
 
-    async stop(result: any, lineWin: ILineWin[]): Promise<boolean> {
+    async stop(result: TResult, lineWin: TResultLine[]): Promise<boolean> {
         this.arrLineWin = lineWin;
-        this.moneyWin = result.win;
-        const arrayCel: Array<Array<number>> = result.cel
+        this.moneyWin = result.sieuxe.win;
+        const arrayCel: Array<Array<number>> = result.sieuxe.cel
         await setTimeout(() => {
             this.spinning = false;
             this.button.getComponent(Button).interactable = true;

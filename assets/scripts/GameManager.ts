@@ -1,7 +1,28 @@
 import { _decorator, AudioClip, CCInteger, Component, math, Node, Vec2 } from 'cc';
 import { AudioMgr } from './AudioMgr';
 import { ReWebSocket } from './ReWebSocket';
+import { z } from 'zod';
+import { DataBet, DataClient, TResult } from './slots/Machine';
 const { ccclass, property } = _decorator;
+
+const TRequest = z.object({
+    data: DataBet,
+    client: DataClient
+  })
+type TRequest = z.infer<typeof TRequest>
+  
+const TResponse = z.object({
+data: z.object({
+    SlotGame: z.object({
+    status: z.number(),
+    result: z.nullable(TResult),
+    message: z.string()
+    })
+})
+})
+type TResponse = z.infer<typeof TResponse>
+
+type TResult = z.infer<typeof TResult>
 
 @ccclass('GameManager')
 export class GameManager extends Component {
@@ -70,8 +91,8 @@ export class GameManager extends Component {
 
         this.webSocket.onmessage = (message) => {
             // let data = message.data;
-            let data = this._decodeMessage(message.data);
-            this.onData(data.data);
+            let data: TResponse = this._decodeMessage(message.data);
+            this.onData(data);
         }
 
         this.webSocket.onclose = (event) => {
@@ -114,17 +135,17 @@ export class GameManager extends Component {
 		return JSON.stringify(message)
 	}
 
-    onData = (dataFetch) => {
+    onData = (dataFetch: TResponse) => {
         let message = ''
         if (!!dataFetch) {
-            if (void 0 !== dataFetch.SlotGame.status) {
-                if (dataFetch.SlotGame.status === 1) {
-                    this.result = dataFetch.SlotGame.result.sieuxe;
-                    this.lineWin = dataFetch.SlotGame.result.sieuxe.line_win;
-                    this.isBigWin = dataFetch.SlotGame.result.sieuxe.isBigWin;
-                    message = dataFetch.SlotGame.message;
+            if (void 0 !== dataFetch.data.SlotGame.status) {
+                if (dataFetch.data.SlotGame.status === 1) {
+                    this.result = dataFetch.data.SlotGame.result;
+                    this.lineWin = dataFetch.data.SlotGame.result.sieuxe.line_win;
+                    this.isBigWin = dataFetch.data.SlotGame.result.sieuxe.isBigWin;
+                    message = dataFetch.data.SlotGame.message;
                 } else {
-                    message = dataFetch.sieuxe.notice
+                    message = dataFetch.data.SlotGame.message
                     console.error(message);
                 }
             } else {
@@ -142,7 +163,7 @@ export class GameManager extends Component {
         //     }
         // }
 
-        let request = {
+        let request: TRequest = {
             "data": {
                 "status": 1,
                 "cuoc": 100,
@@ -151,7 +172,7 @@ export class GameManager extends Component {
             "client": {
                 "profile": {
                     "name": "tai111",
-                    "amount": "100000"
+                    "amount": 100000
                 },
                 "SieuXe" : {
                     "id": "kjahsd9871298371298u3",

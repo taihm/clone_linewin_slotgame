@@ -1,0 +1,7 @@
+// you can write GLSL code directly in here
+
+ //转换成像素点的坐标
+ vec2 changePixel(vec2 uv,vec2 size)
+ {
+    return uv*size;  
+  } 

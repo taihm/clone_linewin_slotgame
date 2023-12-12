@@ -14,6 +14,7 @@ export class ShowMoneyWin extends Component {
     showText = (moneyText: string) => {
         const defaultPosition: Vec3 = this.node.getPosition();
         let textNode = instantiate(this.lblTextNode);
+        textNode.active = true;
         textNode.setPosition(defaultPosition);
         // this.button.getChildByName('Label').getComponent(Label).string = "SPIN";
         textNode.getComponent(Label).string = '+' + moneyText

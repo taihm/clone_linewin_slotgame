@@ -308,6 +308,6 @@ export class Machine extends Component {
     }
 
     showTextMoneyWin = () => {
-        this.textMoneyWin.getComponent('').showText(this.moneyWin);
+        this.textMoneyWin.getComponent('ShowMoneyWin').showText(this.moneyWin);
     }
 }

@@ -392,9 +392,9 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 510.4240766073872,
+    "_orthoHeight": 400.6888068880689,
     "_near": 0,
-    "_far": 1000,
+    "_far": 2000,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,
@@ -1019,7 +1019,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -180.288,
+      "x": -258.03,
       "y": -289.376,
       "z": 0
     },
@@ -1313,7 +1313,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 162.057,
+      "x": 246.015,
       "y": -290,
       "z": 0
     },
@@ -2583,7 +2583,7 @@
         "__id__": 70
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 73
@@ -2631,7 +2631,7 @@
       "__id__": 69
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 71
@@ -2763,8 +2763,8 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "textNode": {
-      "__id__": 69
+    "lblTextNode": {
+      "__id__": 70
     },
     "_id": "24FbELxVFOaJkw/gXe66Li"
   },
@@ -9467,7 +9467,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "ce/XdU7w1JgadI1i3umAbg",
+    "fileId": "5bNUkonaZIk6vY3mscole4",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -9527,7 +9527,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "a2hlnx3FRLepRlc0XV6DvE",
+    "fileId": "11CE9VuklGvp62kcLP20sg",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -9587,7 +9587,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "1cOuIzwCxJ36QKcy6J3hOZ",
+    "fileId": "fc1cDqNulHI6jR/foSFXb8",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -9622,7 +9622,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "a505ZYzk5G9Z+0yJiw311l",
+    "fileId": "a6rJZzkPdBxotIbtr9DnQt",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -9682,7 +9682,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "f1zWKSB1xP4ZYptekmiebk",
+    "fileId": "99sMjCV0hMKKwtWZCi5+4o",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],

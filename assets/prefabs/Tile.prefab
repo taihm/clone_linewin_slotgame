@@ -177,6 +177,10 @@
         "__expectedType__": "cc.SpriteFrame"
       }
     ],
+    "effect": {
+      "__uuid__": "22ffcd8b-a1d8-462e-92e3-1bfd2024fa62",
+      "__expectedType__": "cc.EffectAsset"
+    },
     "_id": ""
   },
   {

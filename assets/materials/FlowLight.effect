@@ -1,0 +1,131 @@
+// Effect Syntax Guide: https://docs.cocos.com/creator/manual/zh/shader/index.html
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: sprite-vs:vert # builtin header
+      frag: fs:frag
+      properties: &props
+        _lineColor:      { value: [1, 1, 1, 1], editor: { type: color } } #流光颜色
+        _speed:      { value: 1.0 } #速度
+        _lineWidth:      { value: 0.1 } #宽度
+        _radian:      { value: 0.52 } #弧度
+        _interval:  { value: 1 } #间隔时间
+  - name: transparent
+    passes:
+    - vert: sprite-vs:vert # builtin header
+      frag: fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram sprite-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  #if SAMPLE_FROM_RT
+    #include <common/common-define>
+    //老版本引用
+    //#include <common>
+  #endif
+  
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+
+  out vec4 color;
+  out vec2 uv0;
+  out vec2 uv1;
+
+  vec4 vert () {
+    vec4 pos = vec4(a_position, 1);
+
+    #if USE_LOCAL
+      pos = cc_matWorld * pos;
+    #endif
+
+    #if USE_PIXEL_ALIGNMENT
+      pos = cc_matView * pos;
+      pos.xyz = floor(pos.xyz);
+      pos = cc_matProj * pos;
+    #else
+      pos = cc_matViewProj * pos;
+    #endif
+
+    uv0 = a_texCoord;
+    #if SAMPLE_FROM_RT
+      uv1 = uv0;
+      CC_HANDLE_RT_SAMPLE_FLIP(uv1);
+    #endif
+    color = a_color;
+    return pos;
+  }
+}%
+
+CCProgram fs %{
+  precision highp float;
+  #include <cc-global>
+
+  #if USE_TEXTURE  
+    #include <sprite-texture>
+    //老版本引用
+    //#include <cc-sprite-texture>
+  #endif
+
+  in vec4 color;
+  in vec2 uv0;
+  in vec2 uv1;
+
+  uniform Constant {
+    vec4 _lineColor;
+    float _speed;
+    float _lineWidth;
+    float _radian;
+    float _interval;
+  };
+
+  vec4 frag () {
+    vec4 col = vec4(1.0);
+
+      #if USE_TEXTURE  
+        #if SAMPLE_FROM_RT
+          col = texture(cc_spriteTexture, uv1);
+        #else
+          col = texture(cc_spriteTexture, uv0);
+        #endif 
+      #endif
+    //按照时间取值
+    float px = mod(cc_time.x*_speed, 1.0+ _interval + atan(_radian));
+
+    //判断是否处于间隔时间
+    if(px <= 1.0 + atan(_radian))
+    {
+
+      //闪光宽度一半
+      float halfLine = _lineWidth/2.0;
+    
+      //旋转弧度
+      float x =  atan(_radian)*uv0[1];
+
+      //计算偏移
+      x = x - atan(_radian) + px;
+
+      //判断是X轴否在线的2边
+      if(uv0[0] - halfLine < x && uv0[0] + halfLine > x)
+      {
+        //颜色渐变 
+        float offset = 1.0 - abs(x-uv0[0])/ halfLine;
+        col = vec4(_lineColor[0] * offset + col[0], _lineColor[1] * offset   + col[1], _lineColor[2] * offset + col[2], col[3]);
+      }
+    }
+    return col;
+  }
+}%

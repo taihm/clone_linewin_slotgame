@@ -82,7 +82,8 @@ export class GameManager extends Component {
 
     connect = () => {
         // this.webSocket = new WebSocket("wss://game.hmtai.net/client");
-        this.webSocket = new WebSocket("ws://localhost:8080/client");
+        // this.webSocket = new WebSocket("ws://localhost:8080/client");
+        this.webSocket = new WebSocket("ws://bunserver.hmtai.net/client");
 
         this.webSocket.onopen = () => {
             console.log('on open web socket');

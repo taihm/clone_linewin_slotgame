@@ -11,6 +11,7 @@ CCEffect %{
         _lineWidth:      { value: 0.1 } #宽度
         _radian:      { value: 0.52 } #弧度
         _interval:  { value: 1 } #间隔时间
+        wave: { value: 0.01 }
   - name: transparent
     passes:
     - vert: sprite-vs:vert # builtin header
@@ -90,10 +91,44 @@ CCProgram fs %{
     float _lineWidth;
     float _radian;
     float _interval;
+    float wave;
   };
+
+  vec2 rotate_cw(vec2 p, float a) {
+    mat2 m = mat2(cos(a), -sin(a), sin(a), cos(a));
+    return p * m;
+  }
+
+  vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
+    float sine = sin(rotation);
+    float cosine = cos(rotation);
+    
+    uv -= pivot;
+    uv.x = uv.x * cosine - uv.y * sine;
+    uv.y = uv.x * sine + uv.y * cosine;
+    uv += pivot;
+
+    return uv;
+  }
+
+  vec4 chromatic(sampler2D cc_spriteTexture, vec2 uv0, float time, float wave) {
+    vec4 r = texture(cc_spriteTexture, uv0 + vec2(wave * sin(1.0 * time + uv0.y * 5.0), 0.0));
+    vec4 g = texture(cc_spriteTexture, uv0 + vec2(wave * sin(20.0 * time + uv0.y * 5.0), 0.0));
+    vec4 b = texture(cc_spriteTexture, uv0 + vec2(wave * sin(40.0 * time + uv0.y * 5.0), 0.0));
+
+    return vec4(r.r, g.g, b.b, (r.a + b.a + g.a)/3.0);
+  }
 
   vec4 frag () {
     vec4 col = vec4(1.0);
+    // 渲染坐标
+    vec2 render_v2 = gl_FragCoord.xy + vec2(0.5);
+    // 屏幕中心坐标
+    vec2 center_v2 = cc_screenSize.xy / 2.0;
+
+    vec2 uv_temp = uv0;
+
+    float time = cc_time[1];
 
       #if USE_TEXTURE  
         #if SAMPLE_FROM_RT
@@ -124,8 +159,18 @@ CCProgram fs %{
         //颜色渐变 
         float offset = 1.0 - abs(x-uv0[0])/ halfLine;
         col = vec4(_lineColor[0] * offset + col[0], _lineColor[1] * offset   + col[1], _lineColor[2] * offset + col[2], col[3]);
+
+        
       }
     }
+
+    // col *= texture(cc_spriteTexture, rotateUV(uv0, vec2(0.5), 3.1415));
+
+    // chromatic effect
+    // col *= chromatic(cc_spriteTexture, uv_temp, time, wave);
+
+    // effect grid ratio = 0.9
+    // col *= clamp(min(mod(render_v2.y, 10.0), mod(render_v2.x, 10.0)), 0.9, 1.0);
     return col;
   }
 }%

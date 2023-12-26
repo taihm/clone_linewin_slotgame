@@ -84,7 +84,7 @@ export default class Tile extends Component {
 
   activeEffect(): void {
     this.mat.setProperty('_speed', 1.5);
-    this.mat.setProperty('_lineWidth', 0.2);
+    this.mat.setProperty('_lineWidth', 0.1);
     this.mat.setProperty('_radian', 0.52);
     this.node.getComponent(Sprite).customMaterial = this.mat;
   }

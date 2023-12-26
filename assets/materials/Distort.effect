@@ -1,0 +1,121 @@
+// Effect Syntax Guide: https://docs.cocos.com/creator/manual/zh/shader/index.html
+
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: sprite-vs:vert 
+      frag: fs:frag
+      properties: &props
+        _noisetex: { value: white, editor: { type:  sampler2D }}   # 噪声纹理
+        _color:  { value: [1, 1, 1, 1], editor: { type: color } }
+        _speed:   { value: 0.05, editor: { type:  range(0,2) } }  #变化速度
+        _strength:   { value: 0.05, editor: { type:  range(0,2) } }  #变化强度
+  - name: transparent
+    passes:
+    - vert: sprite-vs:vert 
+      frag: fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram sprite-vs %{
+  precision highp float;
+  #include <cc-global>
+  
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+
+  out vec4 i_color;
+  out vec2 uv0;
+  out float i_factor;
+
+   uniform MotionVertexDir {
+    vec4 _direction;
+  };
+
+  vec4 vert () {
+    vec4 pos = vec4(a_position, 1);
+
+    #if USE_PIXEL_ALIGNMENT
+      pos = cc_matView * pos;
+      pos.xyz = floor(pos.xyz);
+      pos = cc_matProj * pos;
+    #else
+      pos = cc_matViewProj * pos;
+    #endif
+
+    uv0 = a_texCoord;
+    i_color = a_color;
+
+    return pos;
+  }
+}%
+
+
+CCProgram fs %{
+  precision highp float;
+  #include <cc-global>
+
+  #if USE_TEXTURE  
+    #include <sprite-texture>
+    //老版本引用
+    //#include <cc-sprite-texture>
+  #endif
+
+  in vec4 i_color;
+  in vec2 uv0;
+
+  uniform sampler2D _noisetex;
+
+  uniform Constant {
+    vec4 _color;
+    float _speed;
+    float _strength;
+    float _px;
+  };
+
+  vec4 frag () {
+    vec4 color = _color;
+    vec4 noise = vec4(1);
+    
+    vec2 uv_temp = uv0;
+     
+    // 采样噪声纹理
+    #if USE_NOISETEX
+      //根据时间计算偏移
+      float px = mod(cc_time.x/(1.0/_speed),1.0);
+      vec2 uv = vec2(1.0);
+      uv = uv0 + px;
+      if(uv.x > 1.0)
+      {
+        uv.x = mod(uv.x,1.0);
+      }
+      if(uv.y > 1.0)
+      {
+        uv.y = mod(uv.y,1.0);
+      }
+      //获得偏移噪声点
+      noise = texture(_noisetex,uv);
+      //noise = noise -0.5;
+    #endif
+      // 偏移uv
+      uv_temp.x += ((noise.x - 0.5) *_strength)*noise.z;
+      uv_temp.y += ((noise.y - 0.5) *_strength)*noise.z;
+
+    #if USE_TEXTURE
+      color = texture(cc_spriteTexture, uv_temp);
+    #endif
+  
+    color *= _color;
+    return color;
+  }
+
+}%

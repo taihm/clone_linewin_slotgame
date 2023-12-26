@@ -1,0 +1,124 @@
+// Effect Syntax Guide: https://docs.cocos.com/creator/manual/zh/shader/index.html
+
+//高斯模糊(高性能版本)
+//参考：https://zhuanlan.zhihu.com/p/58182228
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: sprite-vs:vert 
+      frag: fs:frag
+      properties: &props
+        _color:      { value: [1, 1, 1, 1], editor: { type: color } }
+        _textureSize:  { value: [100,100],editor: { type: vector } }   #textrueSize尺寸     
+        _blur:  { value: 100 }                #模糊值                         
+  - name: transparent
+    passes:
+    - vert: sprite-vs:vert 
+      frag: fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram sprite-vs %{
+  precision highp float;
+  #include <cc-global>
+  
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+
+  out vec4 i_color;
+  out vec2 uv0;
+
+  vec4 vert () {
+    vec4 pos = vec4(a_position, 1);
+
+    #if USE_PIXEL_ALIGNMENT
+      pos = cc_matView * pos;
+      pos.xyz = floor(pos.xyz);
+      pos = cc_matProj * pos;
+    #else
+      pos = cc_matViewProj * pos;
+    #endif
+
+    uv0 = a_texCoord;
+    i_color = a_color;
+
+    return pos;
+  }
+}%
+
+
+CCProgram fs %{
+  precision highp float;
+  #include <cc-global>
+
+  #if USE_TEXTURE  
+    #include <sprite-texture>
+    //老版本引用
+    //#include <cc-sprite-texture>
+  #endif
+
+
+  in vec4 i_color;
+  in vec2 uv0;
+
+  //偏移
+  float offset_x[5];
+  float offset_y[5];
+  //权重
+  float weight[5];
+
+  uniform Constant {
+    vec4  _color;
+    vec2  _textureSize;
+    float _blur;
+  };
+
+  
+  //初始化常量 cocos 不支持申明时候初始化数组
+  void init()
+  {
+    offset_x[0] = 0.0 * _blur/_textureSize.x;
+    offset_x[1] = 0.1 * _blur/_textureSize.x;
+    offset_x[2] = 0.2 * _blur/_textureSize.x;
+    offset_x[3] = 0.3 * _blur/_textureSize.x;
+    offset_x[4] = 0.4 * _blur/_textureSize.x;
+    offset_y[0] = 0.0 * _blur/_textureSize.y;
+    offset_y[1] = 0.1 * _blur/_textureSize.y;
+    offset_y[2] = 0.2 * _blur/_textureSize.y;
+    offset_y[3] = 0.3 * _blur/_textureSize.y;
+    offset_y[4] = 0.4 * _blur/_textureSize.y;
+    weight[0] = 0.2270270270;
+    weight[1] = 0.1945945946;
+    weight[2] = 0.1216216216;
+    weight[3] = 0.0540540541;
+    weight[4] = 0.0162162162;
+  }
+
+  vec4 frag () {
+    vec4 color =_color;
+    #if USE_GAUSSIAN_BLUR
+        init();
+        color = texture(cc_spriteTexture, uv0) * weight[0];
+        for (int i=1; i<5; i++) {
+            color +=
+                texture(cc_spriteTexture, (vec2(uv0)+vec2(offset_x[i], offset_y[i])))
+                    * weight[i];
+            color +=
+                texture(cc_spriteTexture, (vec2(uv0)-vec2(offset_x[i], offset_y[i])))
+                    * weight[i];
+        }
+    #else
+       color = texture(cc_spriteTexture, uv0);
+    #endif
+    return color;
+  }
+}%

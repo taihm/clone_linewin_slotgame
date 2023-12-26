@@ -5,14 +5,14 @@
   "__editorExtras__": {},
   "_native": "",
   "_effectAsset": {
-    "__uuid__": "22ffcd8b-a1d8-462e-92e3-1bfd2024fa62",
+    "__uuid__": "e34c7fe4-3a6f-48d9-85f4-5197218ed9eb",
     "__expectedType__": "cc.EffectAsset"
   },
   "_techIdx": 1,
   "_defines": [
     {
-      "USE_PIXEL_ALIGNMENT": true,
-      "USE_TEXTURE": true
+      "USE_TEXTURE": true,
+      "USE_NOISETEX": true
     }
   ],
   "_states": [
@@ -28,9 +28,11 @@
   ],
   "_props": [
     {
-      "_speed": 2,
-      "_lineWidth": 0.8,
-      "wave": 0.04
+      "_noisetex": {
+        "__uuid__": "d5fc9372-6792-4c90-9ce3-d017dce16430@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "_strength": 0.2
     }
   ]
 }

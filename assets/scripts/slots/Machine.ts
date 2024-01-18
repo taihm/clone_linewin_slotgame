@@ -250,14 +250,17 @@ export class Machine extends Component {
     private stopReel(theReel: any, result: number[], spinDelay: number, indexReel: number): Promise<void> {
         if (result) {
             // cel[0] cel[1] cel[2] cel[3] cel[4]
+            // ex: cel = [[1,0,0],[4,3,5],[2,4,3],[1,4,0],[4,6,0]]
             var res = result.slice();
         } else {
             res = null;
         }
         const linesWin = this.arrLineWin;
         const indexCurrentReelStop = indexReel;
+        // console.log('current index reel stop = ' + indexReel);
         return new Promise(function (resolve, reject) {
             setTimeout(() => {
+                //ex: res = [1,0,0]
                 theReel.readyStop(res, linesWin, indexCurrentReelStop);
                 // console.log('after spinDelay stop reel: ' + (spinDelay * 1000));
                 resolve();

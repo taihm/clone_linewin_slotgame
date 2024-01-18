@@ -114,11 +114,18 @@ export default class Reel extends Component {
             if (pop != null && pop >= 0) {
                 // console.log('set tile index = ' + pop)hâh
                 el.getComponent('Tile').setTile(pop);
-
+                // console.log('pop = ' + pop);
                 // check tile can show sfx if tile is in linewin array
                 this.arrLineWin.forEach(item => {
                     // console.log(this.lines[item.line])
                     // console.log(this.lines[item.line][this.indexCurrentReelStop])
+                    // item.win will detemine icon win
+                    // isIndexTileInLineWin will check position icon in reel, if it match array lines value will return true
+                    // ex: line_win: {line: 3, win: 4, type: 3} mean line 3 : [2,2,2,2,2] with icon 4 WIN
+                    // so icon 4 in each reel and its position = 2 will shine
+                    console.log('item line : ' + item.line + ' ; index current reel stop : ' + this.indexCurrentReelStop );
+                    console.log('currentIndexTile value : ' + currentIndexTile );
+                    console.log('line value : ' + this.lines[item.line][this.indexCurrentReelStop] );
                     const isIndexTileInLineWin = currentIndexTile === this.lines[item.line][this.indexCurrentReelStop]
                     if (item.win === pop && isIndexTileInLineWin) {
                         el.getComponent('Tile').showGFX(true);

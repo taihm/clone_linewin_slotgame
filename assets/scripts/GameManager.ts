@@ -116,6 +116,12 @@ export class GameManager extends Component {
         this.reconnect();
     }
 
+
+    /**
+     * Sends a message through the WebSocket connection.
+     * 
+     * @param message - The message to be sent.
+     */
     send = (message) => {
 		try {
 			if (this.webSocket && this.webSocket.readyState === 1) {

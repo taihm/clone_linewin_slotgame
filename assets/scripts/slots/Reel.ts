@@ -89,6 +89,12 @@ export default class Reel extends Component {
         }
     }
 
+    /**
+     * Stops the reel with a given result and lines win.
+     * @param newResult The new result to stop at.
+     * @param linesWin The lines win to stop at.
+     * @param indexCurrentReelStop The index of the current reel stop.
+     */
     readyStop(newResult: Array<number>, linesWin: TResultLine[], indexCurrentReelStop: number): void {
         const check = this.spinDirection === Aux.Direction.Down || newResult == null;
         this.result = check ? newResult : newResult.reverse();
@@ -97,6 +103,10 @@ export default class Reel extends Component {
         this.indexCurrentReelStop = indexCurrentReelStop;
     }
 
+    /**
+     * Checks the change callback for the reel.
+     * @param element The element to check. Defaults to null.
+     */
     changeCallback(element: Node = null): void {
         // console.log('change callback');
         const el = element;
@@ -138,6 +148,11 @@ export default class Reel extends Component {
         }
     }
 
+
+    /**
+     * Checks the end callback for the reel.
+     * @param element The element to check. Defaults to null.
+     */
     checkEndCallback(element: Node = null): void {
         // console.log('check end callback');
         const el = element;
@@ -148,6 +163,11 @@ export default class Reel extends Component {
         }
     }
 
+    
+    /**
+     * Spins the reel with a given wind-up duration.
+     * @param windUp The wind-up duration in milliseconds.
+     */
     doSpin (windUp: number): void {
         this.stopSpinning = false;
 
@@ -169,6 +189,12 @@ export default class Reel extends Component {
         });
     }
 
+    /**
+     * Performs the spinning animation of the reel.
+     * 
+     * @param element - The element to spin. Defaults to null.
+     * @param times - The number of times to repeat the spinning animation. Defaults to 1.
+     */
     doSpinning(element: Node = null, times = 1):void {
         const spinningSpeed = this.isFasterSpeed ? this.fasterSpinSpeed : this.spinSpeed;
         const dirModifier = this.spinDirection === Aux.Direction.Down ? -1 : 1;
@@ -181,6 +207,11 @@ export default class Reel extends Component {
         repeat.then(checkEnd).start();
     }
 
+    /**
+     * Performs the stopping animation of the reel.
+     * 
+     * @param element - The element to stop. Defaults to null.
+     */
     doStop(element: Node = null):void {
         const dirModifier = this.spinDirection === Aux.Direction.Down ? -1 : 1;
 
